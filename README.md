@@ -7,7 +7,8 @@
   *  language: Kotlin
   *  build: gradle
   *  DB: mysql 8.0
-     > docker 설치후 Mysql 이미지 받은 후 진행하였습니다.(맥북 M1기준)
+  
+     > docker + mysql Image(맥북 M1기준)
       1. M1일경우 Apple Sillicon 버전 도커 설치(https://docs.docker.com/desktop/mac/apple-silicon/) 
       2. 설치 후 터미널에서 
          1. docker -v (버전 확인되면 설치 완료)
