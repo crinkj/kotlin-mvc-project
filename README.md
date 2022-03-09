@@ -18,4 +18,6 @@
   *  Spring Boot 2.6.4 + JAVA 11 + JPA + Hibernate
   
 >추가한 기능
-[x] 프로젝트 구성 및 위와같은 환경 구축    [x] JWT Provider/Filter 및 스프링 시큐리티 설정 적용    [x] 회원가입 완료
+   [x] 프로젝트 구성 및 위와같은 환경 구축    
+   [x] JWT Provider/Filter 및 스프링 시큐리티 설정 적용    
+   [x] 회원가입 완료
