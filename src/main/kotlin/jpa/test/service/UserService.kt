@@ -25,4 +25,8 @@ class UserService(val userRepository: UserRepository, private val jwtTokenProvid
         return userRepository.findByEmail(email) != null
     }
 
+    fun findUser(email: String): User? {
+        return userRepository.findByEmail(email)
+    }
+
 }
