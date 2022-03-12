@@ -32,9 +32,9 @@ class PutApiController {
             // 2. description
             this.decription = "~~~~~~~~~~"
         }.apply {
-            // 3. user mutable list
+            // 3. user mutable list(mutableList 는 쓰기/수정이 가능한 collection 이다.
+            // MutableList가 필요하지않을땐 List를 권장한다.
             val userList = mutableListOf<UserRequest>()
-
             userList.add(userRequest)
 
             userList.add(UserRequest().apply{
