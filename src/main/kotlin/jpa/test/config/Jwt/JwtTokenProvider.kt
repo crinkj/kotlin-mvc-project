@@ -20,7 +20,7 @@ import javax.servlet.http.HttpServletRequest
 @Component
 class JwtTokenProvider(private val userDetailsService: UserDetailsService){
 
-    private var  secretKey = "springsecurityjwt"
+    private var  secretKey = "springsecurityjwtForKotlinSpringBootTest"
 
     // 토큰 유효시간 30분
     private val tokenValidTime = 30 * 60 * 1000L
@@ -41,6 +41,7 @@ class JwtTokenProvider(private val userDetailsService: UserDetailsService){
             .setClaims(claims) // 정보 저장
             .setIssuedAt(now)
             .setExpiration(Date(now.time + tokenValidTime)) // 만료 시간 작성
+
             .signWith(SignatureAlgorithm.HS256, secretKey) // 사용할 암호와 알고리즘과 signature에 들어갈 secretKey값 세팅
             .compact()
     }

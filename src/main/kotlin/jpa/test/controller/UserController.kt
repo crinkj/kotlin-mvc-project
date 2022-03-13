@@ -1,6 +1,7 @@
 package jpa.test.controller
 
 import jpa.test.domain.User
+import jpa.test.domain.UserLoginRes
 import jpa.test.service.UserService
 import org.springframework.http.ResponseEntity
 import org.springframework.security.crypto.password.PasswordEncoder
@@ -23,17 +24,17 @@ class UserController(val userService: UserService, val passwordEncoder: Password
     }
 
     @PostMapping("/login")
-    fun login(@RequestBody userReq:User):ResponseEntity<User> {
+    fun login(@RequestBody userReq:User):ResponseEntity<UserLoginRes> {
         if (!userService.checkDuplicateUser(userReq.email)) {
         } else {
             val user: User? = userService.findUser(userReq.email)
             if (user != null) {
                 if (!passwordEncoder.matches(userReq.password, user.password)) {
-                    
+                    ResponseEntity.ok(user)
                 }
             }
         }
-        return ResponseEntity.ok(userReq)
+        return ResponseEntity.ok(userService.login(userReq))
     }
 
 }
