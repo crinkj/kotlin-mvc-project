@@ -26,6 +26,9 @@ repositories {
 }
 
 dependencies {
+	// validaiton library
+	implementation("org.springframework.boot:spring-boot-starter-validation")
+
 	implementation("io.jsonwebtoken:jjwt-api:$jjwtVersion")
 	implementation("io.jsonwebtoken:jjwt-impl:$jjwtVersion")
 	implementation("io.jsonwebtoken:jjwt-jackson:$jjwtVersion")

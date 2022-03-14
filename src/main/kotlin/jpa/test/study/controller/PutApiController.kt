@@ -3,7 +3,12 @@ package jpa.test.study.controller
 import jpa.test.study.model.Result
 import jpa.test.study.model.UserRequest
 import jpa.test.study.model.UserResponse
+import org.springframework.http.ResponseEntity
+import org.springframework.validation.BindingResult
+import org.springframework.validation.FieldError
+import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.*
+import javax.validation.Valid
 
 @RestController
 @RequestMapping("/api")
@@ -19,9 +24,26 @@ class PutApiController {
         return "request-mapping - put method"
     }
 
+    // 적용하고싶은 data class 에 validation 해준 후 적용하는 컨트롤러 객체 앞에다 @Valid 적용
     @PutMapping(path = ["/put-mapping/object"])
-    fun putMappingObject(@RequestBody userRequest: UserRequest): UserResponse{
+    fun putMappingObject(@Valid @RequestBody userRequest: UserRequest, bindResult: BindingResult): ResponseEntity<String> {
+
+        // validation error 확인하는 쉬운방법 b
+        if(bindResult.hasErrors()){
+            // 500 error
+            var msg = StringBuffer()
+            bindResult.allErrors.forEach {
+                val field = it as FieldError
+                val message = it.defaultMessage
+                msg.append(field.field + " : " + message + "\n")
+            }
+            return ResponseEntity.badRequest().body(msg.toString())
+        }
+
+        return ResponseEntity.ok("")
+
         // 0. Response
+/*
       return  UserResponse().apply {
             // 1. result
             this.result = Result().apply {
@@ -56,6 +78,7 @@ class PutApiController {
             this.userRequest = userList
 
         }
+*/
     }
 
 }
