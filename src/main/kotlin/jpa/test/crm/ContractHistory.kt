@@ -11,13 +11,17 @@ import javax.persistence.ManyToOne
 import javax.persistence.OneToOne
 
 @Entity
-class Contract (
+class ContractHistory (
     @Id @GeneratedValue
     val id:Long,
 
     @ManyToOne
     @JoinColumn(name="organization_id")
-    val organization:Organization,
+    val organizationId:Organization,
+
+    @ManyToOne
+    @JoinColumn(name="contract_id")
+    val contractId:Contract,
 
     val adminId:Long,
 
@@ -25,21 +29,17 @@ class Contract (
 
     val salesManager:Long,
 
-    val state:contractState,
-
     val paymentMethod:String,
 
     val endedAt:LocalDateTime,
 
     val startedAt:LocalDateTime,
 
-    val  createdAt:Instant,
+    val createdAt:Instant,
+
+    val contractedAt:LocalDate,
 
     val updatedAt:Instant,
 
     val recruitedAt:LocalDateTime
 )
-
-enum class contractState {
-    VERIFIED, NOT
-}
