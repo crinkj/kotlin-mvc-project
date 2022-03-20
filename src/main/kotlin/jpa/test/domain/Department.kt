@@ -1,8 +1,10 @@
 package jpa.test.domain
 
+import java.time.LocalDateTime
 import javax.persistence.Entity
 import javax.persistence.GeneratedValue
 import javax.persistence.Id
+import javax.persistence.OneToMany
 import javax.persistence.Table
 
 @Entity
@@ -12,4 +14,9 @@ class Department {
     val id:Long?=0
 
     var name:String?=null
+
+    @OneToMany(mappedBy = "Employee")
+    var employeeList:MutableList<Employee>?= mutableListOf()
+
+    var createdDate:LocalDateTime?=null
 }
