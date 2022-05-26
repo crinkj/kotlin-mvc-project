@@ -1,4 +1,4 @@
-package jpa.test.config.Jwt
+package jpa.test.config.jwt
 
 import io.jsonwebtoken.Claims
 import io.jsonwebtoken.Jwts

@@ -15,7 +15,7 @@ class Department {
 
     var name:String?=null
 
-    @OneToMany(mappedBy = "Employee")
+    @OneToMany(mappedBy = "department")
     var employeeList:MutableList<Employee>?= mutableListOf()
 
     var createdDate:LocalDateTime?=null
