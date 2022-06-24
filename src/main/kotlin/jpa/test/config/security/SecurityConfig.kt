@@ -1,7 +1,7 @@
-package jpa.test.config
+package jpa.test.config.security
 
-import jpa.test.config.Jwt.JwtAuthenticationFilter
-import jpa.test.config.Jwt.JwtTokenProvider
+import jpa.test.config.jwt.JwtAuthenticationFilter
+import jpa.test.config.jwt.JwtTokenProvider
 import org.springframework.context.annotation.Bean
 import org.springframework.security.authentication.AuthenticationManager
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
