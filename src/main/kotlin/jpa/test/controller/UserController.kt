@@ -13,18 +13,19 @@ import org.springframework.web.bind.annotation.*
 class UserController(val userService: UserService, val passwordEncoder: PasswordEncoder) {
 
     @PostMapping("/join")
-    fun join(@RequestBody user: User):ResponseEntity<Any>{
+    fun join(@RequestBody user: User): ResponseEntity<Any> {
 
-        val check:Long = 0;
-        if(userService.saveUser(user) == check){
-                return ResponseEntity.ok(user)
+        val check: Long = 0;
+        if (userService.checkDuplicateUser(user.email)) {
+            return ResponseEntity.ok("이미 등록된 이메일입니다")
         }
+            userService.saveUser(user)
 
         return ResponseEntity.ok(user)
     }
 
     @PostMapping("/login")
-    fun login(@RequestBody userReq:User):ResponseEntity<UserLoginRes> {
+    fun login(@RequestBody userReq: User): ResponseEntity<UserLoginRes> {
         if (!userService.checkDuplicateUser(userReq.email)) {
         } else {
             val user: User? = userService.findUser(userReq.email)

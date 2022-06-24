@@ -21,8 +21,7 @@ class User(
     @GeneratedValue
     var id: Long? = null // 들어오는 아이디값이 null이여도 괜찮다.
 
-    @Column(nullable = false)
-    var name: String = name
+    var name: String ?=null
 
     @Column(nullable = false, unique = true)
     var email: String = email
